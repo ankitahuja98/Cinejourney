@@ -1,4 +1,3 @@
-import React from "react";
 import MovieSearch from "./Components/MovieSearch";
 import "./App.css";
 

@@ -7,7 +7,6 @@ const fetchMoviesApi = async (page) => {
     throw new Error("Internal Server Error! Failed to Fetch Movies");
   }
   let data = await response.json();
-  // console.log(data);
   return data;
 };
 
@@ -19,6 +18,5 @@ export const fetchAllMovies = async () => {
       allMovies = allMovies.concat(data.results);
     }
   }
-  // console.log(allMovies);
   return allMovies;
 };
