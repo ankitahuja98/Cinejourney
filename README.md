@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+**Cine Journey - Movie Search Application**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a movie search application built with ReactJS, utilizing React Query to fetch movie data and manage application state, and Tailwind CSS for styling. The application allows users to search for movies, view movie details, and navigate through the results with pagination. 
 
-## Available Scripts
+Live Website Link: 
 
-In the project directory, you can run:
+**Project Structure Overview**
 
-### `npm start`
+**File Structure** 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+/src  
+  ├── /Components  
+  │   ├── Error.js  
+  │   ├── Loader.js  
+  │   ├── MovieSearch.js  
+  ├── api.js  
+  ├── App.js  
+  └── App.css 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+**1. App.js**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    Location: src/App.js 
+    
+    Description: The entry point of the React application. It renders the MovieSearch component inside a wrapper with styling for the background and full-screen height. 
+    
+    Key Elements:
+    
+        Import MovieSearch component to handle the movie list and search functionality. 
+        
+        Apply a full-screen background using Tailwind CSS utility classes (bg-gray-900, min-h-screen). 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**2. MovieSearch.js**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    Location: src/Components/MovieSearch.js 
+    
+    Description: Handles the core functionality of fetching, displaying, and searching the movie list. It uses React Query to fetch movies asynchronously and manage application state for search, pagination, and results display. 
+    
+    Key Features:
+    
+        State Management:
+            
+            input: Captures the user's search query. 
+                
+            currentPage: Keeps track of the current page for pagination. 
+        
+       Fetching Movies:
+        
+            Uses useQuery hook from React Query to fetch movies asynchronously from the API. 
+        
+        Search Handling:
+        
+            Allows users to filter movies based on their search input. 
+        
+        Pagination:
+        
+            Displays a set number of movies per page and handles page navigation (previous/next). 
+        
+        Error Handling: 
+        
+            Displays an error message if the movies fail to load. 
+        
+        Loading State:
+        
+            Shows a loader while data is being fetched. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+**3. Loader.js**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    Location: src/Components/Loader.js 
+    
+    Description: Displays a circular loading spinner when the data is being fetched. Uses Material-UI's CircularProgress component for the loading spinner. 
+    
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**4. Error.js**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    Location: src/Components/Error.js 
+    
+    Description: Displays an error message if there is an issue with fetching the movie data, such as network failure or API errors. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+**5. api.js**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Location: src/api.js 
+    
+    Description: Handles the API requests for fetching movie data. It uses The Movie Database (TMDb) API to get a list of top-rated movies. The fetchAllMovies function fetches all movies by iterating through multiple pages of results and combines them into a single array. 
+    
+    Key Functions:
+    
+        fetchMoviesApi(page): Fetches movies from a specific page. 
+        
+        fetchAllMovies(): Fetches movies from all pages and combines the results. 
+    
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Summary of Functionality**
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Movie List: Displays a list of movies fetched from The Movie Database API. 
+    
+    Search Bar: Users can search movies by title. The search is case-insensitive and dynamically filters the list. 
+    
+    Pagination: Users can navigate through the list of movies with "Next" and "Previous" buttons, with a fixed number of movies per page. 
+    
+    Error Handling: If an API call fails, an error message is shown.
+    
+    Loading Indicator: A loader is displayed when the data is being fetched. 
